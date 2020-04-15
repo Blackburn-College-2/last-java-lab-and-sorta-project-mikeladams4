@@ -17,32 +17,31 @@ public class Runner {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        MyList list = new MyList();
-        list.add(0);
-        list.add(1);
-        list.add(2);
-        list.add(3);
-        list.add(4);
-        list.add(5);
-        list.add(6);
-        System.out.println("Size: " + list.size());
-        System.out.println("List: " + list.toString());
-        System.out.println("3 is located at index: " + list.indexOf(3));
-        System.out.println("Value removed at index 3: " + list.removeAtIndex(3));
-        System.out.println("Size: " + list.size());
-        System.out.println("List: " + list.toString());
-        list.remove(5);
-        System.out.println("Size: " + list.size());
-        System.out.println("List: " + list.toString());
-        MyStack stack = new MyStack();
-        stack.push(8);
+        MyList<String> ls1 = new MyList().add("a").add("b").add("c").add("d");
+        System.out.println(ls1);
+        System.out.println("get index3: " + ls1.get(3));
+        System.out.println("remove x: " + ls1.remove("x"));
+        System.out.println("remove c: " + ls1.remove("c"));
+        System.out.println(ls1);
+        System.out.println("index of a: " + ls1.indexOf("a"));
+        ls1.removeAtIndex(0);
+        System.out.println("removed index 0: " + ls1);
+        System.out.println(ls1.size());
+        MyList<String> ls2 = new MyList().add("a").add("b");
+        ls2.removeAtIndex(1);
+        ls2.add("d");
+        System.out.println(ls2);
+        MyStack stack = new MyStack<Integer>();
+        stack.push(50);
         stack.push(3);
-        stack.push(44);
-        stack.push(9);
-        System.out.println("Stack: " + stack.toString());
-        System.out.println("Stack peek: " + stack.peek());
-        System.out.println("Stack pop: " + stack.pop());
-        System.out.println("Stack: " + stack.toString());
+        stack.push(40000);
+        stack.push(233);
+        System.out.println("My stack:");
+        System.out.println(stack);
+        MyStack stack2 = new MyStack<String>();
+        stack2.push("hi").push("hello").push("last pushed");
+        System.out.println(stack2);
+
     }
 
 }

@@ -21,7 +21,6 @@ public class ListNode<T> {
      */
     ListNode(T v) {
         value = v;
-        System.out.println("Node created. Value : " + v.toString());
     }
 
     /**

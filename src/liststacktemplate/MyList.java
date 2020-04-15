@@ -29,7 +29,7 @@ public class MyList<T> {
             return null;
         }
         for (int j = i; j > 0; j--) {
-            x = head.next;
+            x = x.next;
         }
         return (T) x.getValue();
     }
@@ -128,12 +128,12 @@ public class MyList<T> {
         return this;
     }
 
-/**
- * calculates and returns the size/length of the list.
- *
- * @return the length/size.
- */
-public int size() {
+    /**
+     * calculates and returns the size/length of the list.
+     *
+     * @return the length/size.
+     */
+    public int size() {
         return size;
     }
 
@@ -143,7 +143,11 @@ public int size() {
      * @return true if list contains at least 1 element, false otherwise.
      */
     public boolean isEmpty() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if (size > 0) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     /**
@@ -152,10 +156,10 @@ public int size() {
      * @return MyList: [elem1, elem2, elem3...]
      */
     @Override
-        public String toString() {
-        String s = "[";
+    public String toString() {
+        String s = "MyList: [";
         ListNode current = head;
-        for (int i = 0; i < size-1; i++) {
+        for (int i = 0; i < size -1; i++) {
             s = s + current.value.toString() + ", ";
             current = current.next;
         }

@@ -33,7 +33,7 @@ public class MyStack<T> {
      */
     public T pop() {
         T popped = (T) arr.last.value;
-        arr.removeAtIndex((arr.size()-1));
+        arr.removeAtIndex((arr.size() - 1));
         return popped;
     }
 
@@ -52,11 +52,7 @@ public class MyStack<T> {
      * @return true-contains elements; false otherwise.
      */
     public boolean isEmpty() {
-        if (arr.size > 0) {
-            return false;
-        } else {
-            return true;
-        }
+        return arr.isEmpty();
     }
 
     /**
@@ -76,6 +72,13 @@ public class MyStack<T> {
      */
     @Override
     public String toString() {
-        return arr.toString();
+        
+        String s = "";
+        for (int i = (arr.size - 1); i > -1; i--) {
+            s = s + "|\t" + arr.get(i) + "\t|\n";
+        }
+        s = s + "-----------------";
+        
+        return s;
     }
 }
