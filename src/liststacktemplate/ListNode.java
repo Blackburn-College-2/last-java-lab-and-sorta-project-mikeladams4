@@ -10,14 +10,18 @@ package liststacktemplate;
  * @author Paul
  */
 public class ListNode<T> {
-
+    
+    T value;
+    ListNode next;
+    
     /**
      * Create a new ListNode given a value.
      *
      * @param v
      */
     ListNode(T v) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        value = v;
+        System.out.println("Node created. Value : " + v.toString());
     }
 
     /**
@@ -26,6 +30,6 @@ public class ListNode<T> {
      * @return
      */
     public T getValue() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return value;
     }
 }

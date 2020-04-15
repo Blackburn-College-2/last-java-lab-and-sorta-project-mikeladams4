@@ -12,6 +12,10 @@ package liststacktemplate;
  */
 public class MyList<T> {
 
+    ListNode head;
+    ListNode last;
+    int size = 0;
+
     /**
      * get the ith element stored in the list. Note that this does not return
      * the containing node, but the stored element in the node. Null if D.N.E.
@@ -20,7 +24,14 @@ public class MyList<T> {
      * @return
      */
     public T get(int i) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        ListNode x = head;
+        if (i > size) {
+            return null;
+        }
+        for (int j = i; j > 0; j--) {
+            x = head.next;
+        }
+        return (T) x.getValue();
     }
 
     /**
@@ -30,7 +41,16 @@ public class MyList<T> {
      * @return the modified list object
      */
     public MyList<T> add(T v) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        ListNode node = new ListNode(v);
+        if (size == 0) {
+            head = node;
+            last = node;
+        } else {
+            last.next = node;
+            last = node;
+        }
+        size++;
+        return this;
     }
 
     /**
@@ -44,7 +64,31 @@ public class MyList<T> {
         Be careful here! think about edge cases. If you choose to keep a
         'last' pointer, what if the element being removed is last?
          */
-        throw new UnsupportedOperationException("Not supported yet.");
+        if (i == 0) {
+            ListNode deleted = head;
+            head = deleted.next;
+            size--;
+            return (T) deleted.value;
+        } else if (i == (size - 1)) {
+            ListNode deleted = last;
+            ListNode newLast = head;
+            for (int j = 0; j < i - 1; j++) {
+                newLast = newLast.next;
+            }
+            newLast.next = null;
+            last = newLast;
+            size--;
+            return (T) deleted.value;
+        } else {
+            ListNode current = head;
+            for (int j = 0; j < i - 1; j++) {
+                current = current.next;
+            }
+            ListNode deleted = current.next;
+            current.next = current.next.next;
+            size--;
+            return (T) deleted.value;
+        }
     }
 
     /**
@@ -54,7 +98,14 @@ public class MyList<T> {
      * @return the index or -1 if not found.
      */
     public int indexOf(T v) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        ListNode current = head;
+        for (int i = 0; i < size; i++) {
+            if (current.value == v) {
+                return i;
+            }
+            current = current.next;
+        }
+        return -1;
     }
 
     /**
@@ -66,16 +117,24 @@ public class MyList<T> {
      * ls.remove(3).remove(4)...
      */
     public MyList<T> remove(T v) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        ListNode current = head;
+        for (int i = 0; i < size; i++) {
+            if (current.value == v) {
+                removeAtIndex(i);
+                return this;
+            }
+            current = current.next;
+        }
+        return this;
     }
 
-    /**
-     * calculates and returns the size/length of the list.
-     *
-     * @return the length/size.
-     */
-    public int size() {
-        throw new UnsupportedOperationException("Not supported yet.");
+/**
+ * calculates and returns the size/length of the list.
+ *
+ * @return the length/size.
+ */
+public int size() {
+        return size;
     }
 
     /**
@@ -93,8 +152,15 @@ public class MyList<T> {
      * @return MyList: [elem1, elem2, elem3...]
      */
     @Override
-    public String toString() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        public String toString() {
+        String s = "[";
+        ListNode current = head;
+        for (int i = 0; i < size-1; i++) {
+            s = s + current.value.toString() + ", ";
+            current = current.next;
+        }
+        s = s + current.value.toString() + "]";
+        return s;
     }
 
 }

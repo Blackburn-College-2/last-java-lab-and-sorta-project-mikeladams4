@@ -20,7 +20,8 @@ public class MyStack<T> {
      * @return return the stack to allow chaining. i.e. stack.push(1).push(2)...
      */
     public MyStack<T> push(T t) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        arr.add(t);
+        return this;
     }
 
     /**
@@ -31,7 +32,9 @@ public class MyStack<T> {
      * @return the top of the stack/removed element
      */
     public T pop() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        T popped = (T) arr.last.value;
+        arr.removeAtIndex((arr.size()-1));
+        return popped;
     }
 
     /**
@@ -40,7 +43,7 @@ public class MyStack<T> {
      * @return the top element of the stack
      */
     public T peek() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return (T) arr.last.value;
     }
 
     /**
@@ -49,7 +52,11 @@ public class MyStack<T> {
      * @return true-contains elements; false otherwise.
      */
     public boolean isEmpty() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if (arr.size > 0) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     /**
@@ -58,7 +65,7 @@ public class MyStack<T> {
      * @return
      */
     public int size() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return arr.size;
     }
 
     /**
@@ -69,6 +76,6 @@ public class MyStack<T> {
      */
     @Override
     public String toString() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return arr.toString();
     }
 }
